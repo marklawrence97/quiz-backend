@@ -12,6 +12,7 @@ app.config.from_object(os.getenv('APP_SETTINGS'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 login_manager.init_app(app)
 db = SQLAlchemy(app)
+import models
 migrate = Migrate(app, db)
 
 @app.route('/')
