@@ -3,12 +3,12 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True) # primary keys are required by SQLAlchemy
+    id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100))
     password_hash = db.Column(db.String(100))
     fname = db.Column(db.String(100))
     lname = db.Column(db.String(100))
-    username = db.Column(db.String(50))
+    username = db.Column(db.String(50), unique=True)
     quizes = db.relationship('Quiz', backref='user', lazy=True)
 
     def set_password(self, password):
