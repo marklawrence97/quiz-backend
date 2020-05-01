@@ -31,3 +31,5 @@ from app import resources
 
 api.add_resource(resources.Register, '/register')
 api.add_resource(resources.Profile, '/profile')
+api.add_resource(resources.LogOut, '/logout')
+api.add_resource(resources.LogIn, '/login')
