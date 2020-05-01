@@ -28,3 +28,6 @@ from app import models
 migrate = Migrate(app, db)
 
 from app import resources
+
+api.add_resource(resources.Register, '/register')
+api.add_resource(resources.Profile, '/profile')

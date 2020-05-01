@@ -4,7 +4,7 @@ from flask import request, jsonify
 from app import models
 from app import db
 from app import login_manager
-from flask_login import login_user
+from flask_login import login_user, current_user
 
 class Register(Resource):
 
@@ -34,4 +34,9 @@ class Register(Resource):
 
         return jsonify({"test": "test"})
 
-api.add_resource(Register, '/register')
+class Profile(Resource):
+
+    def get(self):
+        if current_user.is_authenticated:
+            return {"username": current_user.username}
+        return {"username": "Please log in!"}
